@@ -51,24 +51,34 @@ create table `subscription_management`.`subscription_plan` (
 		on update no action);
 
 create table `subscription_management`.`service_provider_has_subscription` (
-	`id` int not null,
-	`subscription_id` int not null,
+	`relation_service_provider_id` int not null,
+	`relation_subscription_id` int not null,
     `create_time` datetime not null,
     `last_update_time` datetime not null,
-    primary key (`id`),
-    constraint `subscription_id`
-		foreign key (`subscription_id`)
+    primary key (`relation_service_provider_id`, `relation_subscription_id`),
+    constraint `relation_service_provider_id`
+		foreign key (`relation_service_provider_id`)
+        references `subscription_management`.`service_provider` (`id`)
+        on delete no action
+		on update no action,
+    constraint `relation_subscription_id`
+		foreign key (`relation_subscription_id`)
         references `subscription_management`.`subscription` (`id`)
         on delete no action
 		on update no action);
 
-create table `subscription_management`.`add_on_subscription` (
-	`id` int not null,
+create table `subscription_management`.`addon_subscription` (
+	`addon_subscription_id` int not null,
+    `base_subscription_id` int not null,
     `create_time` datetime not null,
     `last_update_time` datetime not null,
-    `base_subscription_id` int not null,
-    primary key (`id`),
-    constraint `base_subscription_id`
+    primary key (`addon_subscription_id`, `base_subscription_id`),
+    constraint `addon_subscription_id`
+		foreign key (`addon_subscription_id`)
+        references `subscription_management`.`subscription` (`id`)
+        on delete no action
+        on update no action,
+	constraint `base_subscription_id`
 		foreign key (`base_subscription_id`)
         references `subscription_management`.`subscription` (`id`)
         on delete no action
@@ -79,7 +89,18 @@ create table `subscription_management`.`subscription_beneficiaries` (
     `subscription_id` int not null,
     `create_time` datetime not null,
     `last_update_time` datetime not null,
-    primary key (`email`,`subscription_id`));
+    primary key (`email`,`subscription_id`),
+    constraint `email`
+		foreign key (`email`)
+        references `subscription_management`.`subscriber` (`email`)
+        on delete no action
+        on update no action,
+	constraint `subscription_id`
+		foreign key (`subscription_id`)
+        references `subscription_management`.`subscription` (`id`)
+        on delete no action
+        on update no action);
+    
 
 create table `subscription_management`.`order` (
 	`id` int not null,
