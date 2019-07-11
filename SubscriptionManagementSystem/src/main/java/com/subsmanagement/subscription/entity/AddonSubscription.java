@@ -1,16 +1,12 @@
 package com.subsmanagement.subscription.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
-import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Data
 public class AddonSubscription extends Subscription{
-    public AddonSubscription(Long id, String status, boolean autoRenew, LocalDateTime createTime, LocalDateTime lastUpdateTime, Long serviceProviderId, String subscriberEmail) {
-        super(id, status, autoRenew, false, createTime, lastUpdateTime, serviceProviderId, subscriberEmail);
-    }
 }
