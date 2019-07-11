@@ -1,4 +1,15 @@
-create schema `subscription_management`;
+DROP TABLE IF EXISTS subscription_has_period;
+DROP TABLE IF EXISTS period;
+DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS service_provider_has_subscription;
+DROP TABLE IF EXISTS subscription_plan;
+DROP TABLE IF EXISTS subscription_beneficiaries;
+DROP TABLE IF EXISTS addon_subscription;
+DROP TABLE IF EXISTS subscription;
+DROP TABLE IF EXISTS service_provider;
+DROP TABLE IF EXISTS subscriber;
+
+create schema IF NOT EXISTS `subscription_management`;
 
 create table `subscription_management`.`service_provider` (
 	`id` int not null auto_increment,
@@ -100,7 +111,6 @@ create table `subscription_management`.`subscription_beneficiaries` (
         references `subscription_management`.`subscription` (`id`)
         on delete no action
         on update no action);
-    
 
 create table `subscription_management`.`order` (
 	`id` int not null,
