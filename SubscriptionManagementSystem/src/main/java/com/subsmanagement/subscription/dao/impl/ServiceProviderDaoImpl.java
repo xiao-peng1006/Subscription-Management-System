@@ -6,6 +6,7 @@ import com.subsmanagement.subscription.dao.ServiceProviderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -24,6 +25,7 @@ public class ServiceProviderDaoImpl implements ServiceProviderDao {
     }
 
     @Override
+    @Transactional
     public Optional<ServiceProvider> create(ServiceProvider serviceProvider) {
         return Optional.ofNullable(this.serviceProviderRepository.save(serviceProvider));
     }

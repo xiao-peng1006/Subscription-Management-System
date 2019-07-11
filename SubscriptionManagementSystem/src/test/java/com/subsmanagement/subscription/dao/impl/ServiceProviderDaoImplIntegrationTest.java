@@ -34,9 +34,9 @@ public class ServiceProviderDaoImplIntegrationTest extends SubscriptionApplicati
     @Transactional
     public void findServiceProviderById_withAValidId_shouldReturnAValidServiceProvider(){
         // Arrange
+        Optional<ServiceProvider> newServiceProvider = this.serviceProviderDao.create(this.serviceProvider);
 
         // Act
-        Optional<ServiceProvider> newServiceProvider = this.serviceProviderDao.create(this.serviceProvider);
         Optional<ServiceProvider> serviceProvider = this.serviceProviderDao.findById(newServiceProvider.get().getId());
 
         // Assert

@@ -25,7 +25,7 @@ public class ServiceProviderDaoImplTests {
     private ServiceProvider serviceProvider;
 
     @Before
-    public void setup(){
+    public void setUp(){
         this.mockServiceProviderDao = new ServiceProviderDaoImpl(this.mockServiceProviderRepository);
         this.serviceProvider = ServiceProvider.builder()
                 .name("DATADOG")
