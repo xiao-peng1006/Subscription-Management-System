@@ -1,9 +1,6 @@
 package com.subsmanagement.subscription.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +8,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor @AllArgsConstructor
+@Builder
 public class Order {
     private @Id Long id;
     private Date date;
