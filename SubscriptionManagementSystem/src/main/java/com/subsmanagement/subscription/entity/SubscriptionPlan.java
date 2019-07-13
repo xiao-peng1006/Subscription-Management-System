@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,10 +12,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class SubscriptionPlan {
-    private @Id Long id;
-    private int duration;
-    private int cost;
+    private @Id Integer id;
+    private Integer duration;
+    private BigDecimal cost;
     private LocalDateTime createTime;
     private LocalDateTime lastUpdateTime;
-    private Long subscriptionId;
+    private Integer subscriptionId;
 }

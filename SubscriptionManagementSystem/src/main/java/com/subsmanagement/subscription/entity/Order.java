@@ -12,12 +12,12 @@ import java.util.Date;
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Order {
-    private @Id Long id;
+    private @Id Integer id;
     private Date date;
     private String status;
     private LocalDateTime createTime;
     private LocalDateTime lastUpdateTime;
-    private Long subscriptionId;
+    private Integer subscriptionId;
     private String email;
-    private Long subscriptionPlanId;
+    private Integer subscriptionPlanId;
 }

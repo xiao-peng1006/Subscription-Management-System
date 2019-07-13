@@ -3,6 +3,8 @@ package com.subsmanagement.subscription.entity;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -11,12 +13,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Subscription {
-    private @Id Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+
     private String status;
     private boolean autoRenew;
     private boolean base;
     private LocalDateTime createTime;
     private LocalDateTime lastUpdateTime;
-    private Long serviceProviderId;
+    private Integer serviceProviderId;
     private String subscriberEmail;
 }
