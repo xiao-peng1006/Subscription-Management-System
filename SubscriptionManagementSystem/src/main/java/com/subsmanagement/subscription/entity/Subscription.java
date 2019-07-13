@@ -17,8 +17,6 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     private String status;
     private boolean autoRenew;
     private boolean base;

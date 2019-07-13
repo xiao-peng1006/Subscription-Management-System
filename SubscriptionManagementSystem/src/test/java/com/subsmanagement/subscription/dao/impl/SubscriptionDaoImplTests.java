@@ -88,7 +88,7 @@ public class SubscriptionDaoImplTests {
     public void findBySubscriberEmailAddress_happyPath() {
         // Arrange
         String mockSubscriberEmailAddress = "test@test.com";
-        when(this.mockSubscriptionRepository.findBySubscriberEmailAddress(mockSubscriberEmailAddress))
+        when(this.mockSubscriptionRepository.findBySubscriberEmail(mockSubscriberEmailAddress))
                 .thenReturn(this.subscriptionList);
 
         // Act

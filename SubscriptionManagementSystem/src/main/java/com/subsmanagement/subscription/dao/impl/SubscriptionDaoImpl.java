@@ -4,11 +4,13 @@ import com.subsmanagement.subscription.dao.SubscriptionDao;
 import com.subsmanagement.subscription.entity.Subscription;
 import com.subsmanagement.subscription.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SubscriptionDaoImpl implements SubscriptionDao {
 
     private final SubscriptionRepository subscriptionRepository;
@@ -34,6 +36,6 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 
     @Override
     public List<Subscription> findBySubscriberEmailAddress(String emailAddress) {
-        return this.subscriptionRepository.findBySubscriberEmailAddress(emailAddress);
+        return this.subscriptionRepository.findBySubscriberEmail(emailAddress);
     }
 }

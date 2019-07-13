@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Integer> {
 
-    public List<Subscription> findByServiceProviderId(Integer id);
+    List<Subscription> findByServiceProviderId(Integer id);
 
-    public List<Subscription> findBySubscriberEmailAddress(String emailAddress);
+    List<Subscription> findBySubscriberEmail(String emailAddress);
 }
