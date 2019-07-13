@@ -1,13 +1,13 @@
-DROP TABLE IF EXISTS subscription_has_period;
-DROP TABLE IF EXISTS period;
+DROP TABLE IF EXISTS `subscription_has_period`;
+DROP TABLE IF EXISTS `period`;
 DROP TABLE IF EXISTS `order`;
-DROP TABLE IF EXISTS service_provider_has_subscription;
-DROP TABLE IF EXISTS subscription_plan;
-DROP TABLE IF EXISTS subscription_beneficiaries;
-DROP TABLE IF EXISTS addon_subscription;
-DROP TABLE IF EXISTS subscription;
-DROP TABLE IF EXISTS service_provider;
-DROP TABLE IF EXISTS subscriber;
+DROP TABLE IF EXISTS `service_provider_has_subscription`;
+DROP TABLE IF EXISTS `subscription_plan`;
+DROP TABLE IF EXISTS `subscription_beneficiaries`;
+DROP TABLE IF EXISTS `addon_subscription`;
+DROP TABLE IF EXISTS `subscription`;
+DROP TABLE IF EXISTS `service_provider`;
+DROP TABLE IF EXISTS `subscriber`;
 
 create schema IF NOT EXISTS `subscription_management`;
 

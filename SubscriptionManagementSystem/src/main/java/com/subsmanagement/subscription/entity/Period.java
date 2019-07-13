@@ -11,13 +11,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Period {
-    private @Id Long id;
+    private @Id Integer id;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private LocalDateTime createTime;
     private LocalDateTime lastUpdateTime;
 
-    private Long subscriptionId;
-    private Long subscriptionPlanId;
-    private Long orderId;
+    private Integer subscriptionId;
+    private Integer subscriptionPlanId;
+    private Integer orderId;
 }
