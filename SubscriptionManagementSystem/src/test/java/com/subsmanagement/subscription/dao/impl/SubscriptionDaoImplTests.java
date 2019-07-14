@@ -76,7 +76,6 @@ public class SubscriptionDaoImplTests {
         int mockServiceProviderId = 1;
         when(this.mockSubscriptionRepository.findByServiceProviderId(mockServiceProviderId))
                 .thenReturn(this.subscriptionList);
-
         // Act
         List<Subscription> subscriptionListReturned = this.mockSubscriptionDao.findByServiceProviderId(mockServiceProviderId);
 
