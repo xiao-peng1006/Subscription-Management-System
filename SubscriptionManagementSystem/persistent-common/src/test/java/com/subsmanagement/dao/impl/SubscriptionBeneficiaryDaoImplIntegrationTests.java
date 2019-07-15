@@ -9,17 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SubscriptionBeneficiaryDaoImplIntegrationTests extends PersistentCommonTests {
 
     @Autowired
     private SubscriptionBeneficiaryDao subscriptionBeneficiaryDao;
 
-    private static final String EMAIL = "someemail@gmail.com";
+    private static final String EMAIL = "test@test.com";
     private static final int SUBSCRIPTION_ID = 1;
     private SubscriptionBeneficiary subscriptionBeneficiary;
 
@@ -59,5 +59,24 @@ public class SubscriptionBeneficiaryDaoImplIntegrationTests extends PersistentCo
         // Assert
         assertTrue(subscriptionBeneficiaryOptional.isPresent());
         assertEquals(subscriptionBeneficiary, subscriptionBeneficiaryOptional.get());
+    }
+
+    @Test
+    @Transactional
+    public void findAllSubscriptionBeneficiaryBySubscriptionId_withvalidId_shouldReturnAllValidSubscriptionBeneficiary() {
+        // Arrange
+        this.subscriptionBeneficiaryDao.create(this.subscriptionBeneficiary);
+        this.subscriptionBeneficiary.setSubscriptionEmailKey(new SubscriptionBeneficiary.SubscriptionEmailKey(
+                this .subscriptionBeneficiary.getSubscriptionEmailKey().getSubscriptionId(), "another@test.com"
+        ));
+        this.subscriptionBeneficiaryDao.create(this.subscriptionBeneficiary);
+
+        // Act
+        List<SubscriptionBeneficiary> subscriptionBeneficiaries = this.subscriptionBeneficiaryDao
+                .findAllBySubscriptionId(this.subscriptionBeneficiary.getSubscriptionEmailKey().getSubscriptionId());
+
+        // Assert
+        assertFalse(subscriptionBeneficiaries.isEmpty());
+        assertEquals(2, subscriptionBeneficiaries.size());
     }
 }
