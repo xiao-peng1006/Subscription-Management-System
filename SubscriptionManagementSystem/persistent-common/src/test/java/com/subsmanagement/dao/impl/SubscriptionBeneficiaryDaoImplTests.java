@@ -10,10 +10,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -47,6 +48,22 @@ public class SubscriptionBeneficiaryDaoImplTests {
         // Assert
         assertTrue(subscriptionBeneficiaryOptional.isPresent());
         assertEquals(this.subscriptionBeneficiary, subscriptionBeneficiaryOptional.get());
+    }
+
+    @Test
+    public void findAllSubscriptionBeneficiaryBySubscriptionId_happyPath(){
+        // Arrange
+        when(this.subscriptionBeneficiaryRepository.findAllBySubscriptionEmailKey_SubscriptionId(
+                this.subscriptionBeneficiary.getSubscriptionEmailKey().getSubscriptionId()))
+                .thenReturn(Arrays.asList(new SubscriptionBeneficiary(), new SubscriptionBeneficiary()));
+
+        // Act
+        List<SubscriptionBeneficiary> subscriptionBeneficiaries = this.subscriptionBeneficiaryDao
+                .findAllBySubscriptionId(this.subscriptionBeneficiary.getSubscriptionEmailKey().getSubscriptionId());
+
+        // Assert
+        assertFalse(subscriptionBeneficiaries.isEmpty());
+        assertEquals(2, subscriptionBeneficiaries.size());
     }
 
     @Test
