@@ -1,9 +1,12 @@
 package com.subsmanagement.controller;
 
+import com.subsmanagement.annotation.AdviceOK;
 import com.subsmanagement.dao.SubscriptionDao;
 import com.subsmanagement.entity.Subscription;
+import com.subsmanagement.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +24,8 @@ public class SubscriptionController {
     }
 
     @GetMapping("/{id}")
-    public Subscription getSubscription(Integer id) {
+    @AdviceOK
+    public Subscription getSubscription(@PathVariable Integer id) {
         if (id < 1) {
             throw new IllegalArgumentException("Invalid subscription id: " + id);
         }
