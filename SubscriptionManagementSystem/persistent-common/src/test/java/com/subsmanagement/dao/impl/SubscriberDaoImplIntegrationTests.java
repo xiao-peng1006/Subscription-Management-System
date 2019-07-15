@@ -6,8 +6,9 @@ import com.subsmanagement.entity.Subscriber;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
+
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
