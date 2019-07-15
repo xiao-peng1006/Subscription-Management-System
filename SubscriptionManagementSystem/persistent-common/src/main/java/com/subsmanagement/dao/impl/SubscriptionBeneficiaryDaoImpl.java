@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,10 @@ public class SubscriptionBeneficiaryDaoImpl implements SubscriptionBeneficiaryDa
     @Override
     public Optional<SubscriptionBeneficiary> findById(SubscriptionBeneficiary.SubscriptionEmailKey subscriptionEmailKey) {
         return this.subscriptionBeneficiaryRepository.findById(subscriptionEmailKey);
+    }
+
+    @Override
+    public List<SubscriptionBeneficiary> findAllBySubscriptionId(Integer subcriptionId) {
+        return this.subscriptionBeneficiaryRepository.findAllBySubscriptionEmailKey_SubscriptionId(subcriptionId);
     }
 }
