@@ -2,15 +2,13 @@ package com.subsmanagement.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Table(name = "`order`")
 @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class Order {

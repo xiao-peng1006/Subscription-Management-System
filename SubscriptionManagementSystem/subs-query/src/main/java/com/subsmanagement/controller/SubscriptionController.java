@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,10 +34,23 @@ public class SubscriptionController {
         Optional<Subscription> subscription = this.subscriptionDao.findById(id);
 
         if (!subscription.isPresent()) {
-            throw new NotFoundException("Subscription: " + id + " has no beneficiary");
+            throw new NotFoundException("Subscription: " + id + " does not exist.");
         }
 
         return subscription.get();
+    }
+
+    @GetMapping("/subscriptios")
+    @AdviceOK
+    public List<Subscription> getAllSubscriptionsBySubscriberEmail(@PathVariable String emailAddress) {
+
+        List<Subscription> subscriptions = this.subscriptionDao.findAllBySubscriberEmailAddress(emailAddress);
+
+        if (subscriptions.isEmpty()) {
+            throw new NotFoundException("Subscriber: " + emailAddress + " has no subscription yet.");
+        }
+
+        return subscriptions;
     }
 
 }

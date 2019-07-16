@@ -76,7 +76,7 @@ public class SubscriptionDaoImplIntegrationTests extends PersistentCommonTests {
         newSubscriptionList.add(this.subscriptionDao.create(this.subscription));
 
         // Act
-        List<Subscription> subscriptionList = this.subscriptionDao.findByServiceProviderId(1);
+        List<Subscription> subscriptionList = this.subscriptionDao.findAllByServiceProviderId(1);
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionList);
@@ -90,7 +90,7 @@ public class SubscriptionDaoImplIntegrationTests extends PersistentCommonTests {
         newSubscriptionList.add(this.subscriptionDao.create(this.subscription));
 
         // Act
-        List<Subscription> subscriptionList = this.subscriptionDao.findBySubscriberEmailAddress("test@test.com");
+        List<Subscription> subscriptionList = this.subscriptionDao.findAllBySubscriberEmailAddress("test@test.com");
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionList);

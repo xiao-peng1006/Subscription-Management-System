@@ -11,7 +11,7 @@ public interface SubscriptionDao {
 
     Optional<Subscription> create(Subscription subscription);
 
-    List<Subscription> findByServiceProviderId(Integer id);
+    List<Subscription> findAllByServiceProviderId(Integer id);
 
-    List<Subscription> findBySubscriberEmailAddress(String emailAddress);
+    List<Subscription> findAllBySubscriberEmailAddress(String emailAddress);
 }

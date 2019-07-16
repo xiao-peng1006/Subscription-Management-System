@@ -76,10 +76,10 @@ public class SubscriptionDaoImplTests {
     public void findByServiceProviderId_happyPath() {
         // Arrange
         int mockServiceProviderId = 1;
-        when(this.mockSubscriptionRepository.findByServiceProviderId(mockServiceProviderId))
+        when(this.mockSubscriptionRepository.findAllByServiceProviderId(mockServiceProviderId))
                 .thenReturn(this.subscriptionList);
         // Act
-        List<Subscription> subscriptionListReturned = this.mockSubscriptionDao.findByServiceProviderId(mockServiceProviderId);
+        List<Subscription> subscriptionListReturned = this.mockSubscriptionDao.findAllByServiceProviderId(mockServiceProviderId);
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionListReturned);
@@ -89,11 +89,11 @@ public class SubscriptionDaoImplTests {
     public void findBySubscriberEmailAddress_happyPath() {
         // Arrange
         String mockSubscriberEmailAddress = "test@test.com";
-        when(this.mockSubscriptionRepository.findBySubscriberEmail(mockSubscriberEmailAddress))
+        when(this.mockSubscriptionRepository.findAllBySubscriberEmail(mockSubscriberEmailAddress))
                 .thenReturn(this.subscriptionList);
 
         // Act
-        List<Subscription> subscriptionReturned = this.mockSubscriptionDao.findBySubscriberEmailAddress(mockSubscriberEmailAddress);
+        List<Subscription> subscriptionReturned = this.mockSubscriptionDao.findAllBySubscriberEmailAddress(mockSubscriberEmailAddress);
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionReturned);
