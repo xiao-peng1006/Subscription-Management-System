@@ -7,8 +7,9 @@ import com.subsmanagement.entity.Subscription;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
+
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 
 public class SubscriptionDaoImplIntegrationTests extends PersistentCommonTests {
 
@@ -76,7 +76,7 @@ public class SubscriptionDaoImplIntegrationTests extends PersistentCommonTests {
         newSubscriptionList.add(this.subscriptionDao.create(this.subscription));
 
         // Act
-        List<Subscription> subscriptionList = this.subscriptionDao.findByServiceProviderId(1);
+        List<Subscription> subscriptionList = this.subscriptionDao.findAllByServiceProviderId(1);
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionList);
@@ -90,7 +90,7 @@ public class SubscriptionDaoImplIntegrationTests extends PersistentCommonTests {
         newSubscriptionList.add(this.subscriptionDao.create(this.subscription));
 
         // Act
-        List<Subscription> subscriptionList = this.subscriptionDao.findBySubscriberEmailAddress("test@test.com");
+        List<Subscription> subscriptionList = this.subscriptionDao.findAllBySubscriberEmailAddress("test@test.com");
 
         // Assert
         assertEquals(this.subscriptionList, subscriptionList);

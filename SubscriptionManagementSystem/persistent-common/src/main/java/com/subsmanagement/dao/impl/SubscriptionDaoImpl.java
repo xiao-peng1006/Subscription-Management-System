@@ -30,12 +30,12 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
     }
 
     @Override
-    public List<Subscription> findByServiceProviderId(Integer id) {
-        return this.subscriptionRepository.findByServiceProviderId(id);
+    public List<Subscription> findAllByServiceProviderId(Integer id) {
+        return this.subscriptionRepository.findAllByServiceProviderId(id);
     }
 
     @Override
-    public List<Subscription> findBySubscriberEmailAddress(String emailAddress) {
-        return this.subscriptionRepository.findBySubscriberEmail(emailAddress);
+    public List<Subscription> findAllBySubscriberEmailAddress(String emailAddress) {
+        return this.subscriptionRepository.findAllBySubscriberEmail(emailAddress);
     }
 }

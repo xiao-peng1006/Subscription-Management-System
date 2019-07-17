@@ -23,14 +23,18 @@ public class Subscription {
     private String status;
 
     private boolean autoRenew;
+
     private boolean base;
 
     @NotNull
     private LocalDateTime createTime;
+
     @NotNull
     private LocalDateTime lastUpdateTime;
+
     @NotNull
     private Integer serviceProviderId;
+
     @NotNull
     private String subscriberEmail;
 }
