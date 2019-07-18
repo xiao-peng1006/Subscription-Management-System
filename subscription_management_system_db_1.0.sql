@@ -51,13 +51,13 @@ create table `subscription_management`.`subscription_plan` (
 	`id` int not null,
     `duration` int not null,
     `cost` int not null,
-    `owner_subscription_id` int not null,
+    `service_provider_id` int not null,
     `create_time` datetime not null,
     `last_update_time` datetime not null,
     primary key (`id`),
-    constraint `owner_subscription_id`
-		foreign key (`owner_subscription_id`)
-        references `subscription_management`.`subscription` (`id`)
+    constraint `service_provider_id`
+		foreign key (`service_provider_id`)
+        references `subscription_management`.`service_provider` (`id`)
         on delete no action
 		on update no action);
 
