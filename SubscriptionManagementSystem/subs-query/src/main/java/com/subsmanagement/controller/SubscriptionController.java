@@ -52,5 +52,4 @@ public class SubscriptionController {
 
         return subscriptions;
     }
-
 }
