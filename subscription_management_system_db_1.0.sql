@@ -55,7 +55,7 @@ create table `subscription_management`.`subscription_plan` (
     `create_time` datetime not null,
     `last_update_time` datetime not null,
     primary key (`id`),
-    constraint `service_provider_id`
+    constraint `fk_service_provider_id`
 		foreign key (`service_provider_id`)
         references `subscription_management`.`service_provider` (`id`)
         on delete no action
