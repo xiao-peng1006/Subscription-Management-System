@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
-public class GetSubsriptionRequest {
+public class GetSubscriptionRequest {
     @NotNull
     private Integer subscriptionId;
 

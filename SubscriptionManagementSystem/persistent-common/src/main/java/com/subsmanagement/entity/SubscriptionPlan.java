@@ -17,5 +17,5 @@ public class SubscriptionPlan {
     private BigDecimal cost;
     private LocalDateTime createTime;
     private LocalDateTime lastUpdateTime;
-    private Integer subscriptionId;
+    private Integer serviceProviderId;
 }
